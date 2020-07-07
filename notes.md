@@ -7,9 +7,11 @@
 
 #### Assembler
 
-An assembler is a program that converts assembly language into machine code. It takes the basic commands and operations from assembly code and converts them into binary code that can be recognized by the specific type of processor. 
+An assembler is a program that converts assembly language into machine code. It takes the basic commands and operations from assembly code and converts them into binary code that can be recognized by the specific type of processor.
 
-[Techterms – assembler]
+> [ref](#resources)
+>
+> - Techterms – assembler
 
 #### BIOS(Basic Input/Output System)
 
@@ -20,7 +22,9 @@ The four main functions of a BIOS:
 - **BIOS drivers** – Low-level drivers that give the computer basic operational control over your computer's hardware.
 - **BIOS setup** – Configuration program that enables hardware settings including system settings such as computer passwords, time, and date.
 
-[Computerhope]
+> [ref](#resources)
+>
+> - Computerhope
 
 #### Interrupts
 
@@ -36,13 +40,15 @@ There are three types of interrupts:
 
 Interrupts are important because they give the user better control over the computer. Without interrupts, a user may have to wait for a given application to have a higher priority over the CPU to be ran. This ensures that the CPU will deal with the process immediately.
 
-*An interrupt is sent to the processor as an interrupt request, or IRQ. Each input device has a unique IRQ setting, or priority. This prevents conflicts and ensures common input devices, such as keyboards and mice, are prioritized.*
+_An interrupt is sent to the processor as an interrupt request, or IRQ. Each input device has a unique IRQ setting, or priority. This prevents conflicts and ensures common input devices, such as keyboards and mice, are prioritized._
 
-[K-State]
-[Techterms – interrupt]
-
+> [ref](#resources)
+>
+> - K-State
+> - Techterms – interrupt
 
 #### CPU registers
+
 In Computer Architecture, the Registers are very fast computer memory which are used to execute programs and operations efficiently.
 
 <!-- Some registers are used internally and cannot be accessed outside the processor, while others are user-accessible. Most modern CPU architectures include both types of registers. -->
@@ -54,34 +60,59 @@ In Computer Architecture, the Registers are very fast computer memory which are 
 - **Program Counter (PC)**: Is used to keep the track of execution of the program. It contains the memory address of the next instruction to be fetched. PC points to the address of the next instruction to be fetched from the main memory when the previous instruction has been successfully completed. Program Counter (PC) also functions to count the number of instructions.
 - **Instruction Register (IR)**: It is the register which holds the instruction which is currently been executed.
 
-[Geeksforgeeks]
-
+> [ref](#resources)
+>
+> - Geeksforgeeks
 
 #### Memory Offsets
 
 In computer engineering and low-level programming (such as assembly language), an offset usually denotes the number of address locations added to a base address in order to get to a specific absolute address. In this (original) meaning of offset, only the basic address unit, usually the 8-bit byte, is used to specify the offset's size. In this context an offset is sometimes called a relative address.
 
-[Wikipedia – Offset (computer science)]
-
+> [ref](#resources)
+>
+> - Wikipedia – Offset (computer science)
 
 #### Pointers
 
- A pointer is simply a variable containing an address of another variable, array or other data structure. We can also say that the address is the pointer itself.
+A pointer is simply a variable containing an address of another variable, array or other data structure. We can also say that the address is the pointer itself.
 
- Assembly language allows you to use pointers with greater flexibility because pointers are de-referenced by using memory addressing modes. These memory addressing modes imply the use of registers to de-reference a pointer (in other words, to access the pointing object). You are not restricted to using only one register containing the base address of a variable, you can use multiple registers as indices to access another variable or object.
+Assembly language allows you to use pointers with greater flexibility because pointers are de-referenced by using memory addressing modes. These memory addressing modes imply the use of registers to de-reference a pointer (in other words, to access the pointing object). You are not restricted to using only one register containing the base address of a variable, you can use multiple registers as indices to access another variable or object.
 
 There are two ways of how you can obtain a pointer value directly by using a single instruction only.
 
 - Use the mov instruction to assign a pointer to a 32-bit/64-bit register by specifying the name of the variable without using brackets. The compiler will substitute the text of this variable with the actual address.
 - Specify the variable to the lea instruction. The address will be assigned to a 32-bit or 64-bit register. Lea stands for load effective address.
 
-[The ASM Blog]
-
+> [ref](#resources)
+>
+> - The ASM Blog
 
 #### Stack
+
+##### A Stack
+
+Is an abstract data structure which consists of information in a Last In First Out system. You put arbitrary objects onto the stack and then you take them off again, much like an in/out tray, the top item is always the one that is taken off and you always put on to the top.
+
+##### A Programs Stack
+
+Is a stack, it's a section of memory that is used during execution, it generally has a static size per program and frequently used to store function parameters. You push the parameters onto the stack when you call a function and the function either address the stack directly or pops off the variables from the stack.
+
+A programs stack isn't generally hardware (though it's kept in memory so it can be argued as such), but the Stack Pointer which points to a current area of the Stack is generally a CPU register. This makes it a bit more flexible than a LIFO stack as you can change the point at which the stack is addressing.
+
+You should read and make sure you understand the [wikipedia](<https://en.wikipedia.org/wiki/Stack_(abstract_data_type)>) article as it gives a good description of the Hardware Stack which is what you are dealing with.
+
+There is also [this tutorial](http://ee.sharif.edu/~sakhtar3/articles/8086/ASM%20Tutorial-Ready%20to%20Start!.htm#stack) which explains the stack in terms of the old 16bit registers but could be helpful and [another one](https://web.archive.org/web/20070822075422/http://www.emu8086.com/assembly_language_tutorial_assembler_reference/asm_tutorial_09.html) specifically about the stack.
+
+> [ref](#resources)
+>
+> - Stack Overflow – How does the stack work in assembly language by Henry B
+
 #### Control Structures
+
 #### Function Calling
+
 #### Strings
+
 #### Segmentation
 
 ###### Resources
@@ -89,8 +120,9 @@ There are two ways of how you can obtain a pointer value directly by using a sin
 - [Computerhope](https://www.computerhope.com/jargon/b/bios.htm)
 - [Geeksforgeeks](https://www.geeksforgeeks.org/different-classes-of-cpu-registers/)
 - [K-State](http://faculty.salina.k-state.edu/tim/ossg/Introduction/OSworking.html)
+- [Stack Overflow – How does the stack work in assembly language by Henry B](https://stackoverflow.com/questions/556714/how-does-the-stack-work-in-assembly-language)
 - [Techterms – assembler](https://techterms.com/definition/assembler)
 - [Techterms – interrupt](https://techterms.com/definition/interrupt)
 - [The ASM Blog](https://theasmblog.com/2020/02/29/pointers-in-assembly-language/)
 - [University of Virginia](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
-- [Wikipedia – Offset (computer science)](https://en.wikipedia.org/wiki/Offset_(computer_science))
+- [Wikipedia – Offset (computer science)](<https://en.wikipedia.org/wiki/Offset_(computer_science)>)
