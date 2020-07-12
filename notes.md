@@ -109,6 +109,90 @@ There is also [this tutorial](http://ee.sharif.edu/~sakhtar3/articles/8086/ASM%2
 
 #### Control Structures
 
+##### Translating high-level structures
+
+We are used to using high-level structures rather than just branches
+- Therefore, it’s useful to know how to translate these structures in assembly, so that we can just use the same patterns as when writing, say, C code
+- A compiler does such translations for us
+
+##### If-else
+
+A generic if-then-else construct:
+
+```c
+if (condition){
+    // then_block
+}
+else {
+    // else_block
+}
+```
+
+Translation into x86 assembly:
+
+```md
+; instructions to set flags (e.g., cmp ...)
+jxx    else_block       ; xx so that branch if
+                        ; condition is false
+    ; code for the then block
+jmp endif
+
+else_block:
+    ; code for the else block
+endif:
+```
+
+##### For loops
+
+A generic for-loop construct:
+
+```c
+int sum = 0;
+int i = 0;
+for (i = 0; i <= 10; i++){
+    sum += i;
+}
+```
+Translation into x86 assembly:
+
+```md
+        mov eax, 0      ; eax is sum
+        mov ebx, 0      ; ebx is i
+loop_start:
+        cmp ebx, 10     ; compare i and 10
+        jg loop_end     ; if (i>10) go loop_end
+        add eax, ebx    ; sum += i
+        inc ebx         ; i++
+        jmp loop_start  ; go to loop_start
+loop_end:
+```
+
+##### While loops
+
+A generic while loop:
+
+```c
+while (condition) {
+    // body
+}
+```
+
+Translation into x86 assembly:
+
+```md
+while:
+    ; instructions to set flags (e.g., cmp...)
+    jxx end_while           ; branches if 
+                            ; condition = false
+        ; body of loop
+    jmp while
+end_while
+```
+
+> [ref](#resources)
+>
+> - Control Structures – ICS312 Machine-Level and Systems Programming by Henri Casanova
+
 #### Function Calling
 
 #### Strings
@@ -124,5 +208,6 @@ There is also [this tutorial](http://ee.sharif.edu/~sakhtar3/articles/8086/ASM%2
 - [Techterms – assembler](https://techterms.com/definition/assembler)
 - [Techterms – interrupt](https://techterms.com/definition/interrupt)
 - [The ASM Blog](https://theasmblog.com/2020/02/29/pointers-in-assembly-language/)
+- [University of Hawaii at Manoa](http://courses.ics.hawaii.edu/ReviewICS312/morea/ControlStructures/ics312_controlstructures.pdf)
 - [University of Virginia](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 - [Wikipedia – Offset (computer science)](<https://en.wikipedia.org/wiki/Offset_(computer_science)>)
