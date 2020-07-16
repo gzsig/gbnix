@@ -19,8 +19,7 @@ to call `qemu-system-x86_64 binfile`
 Then run the following commands on your terminal:
 
 ```bash
-nasm -f bin file_name.asm -o file_name.bin
-
+nasm file_name.asm -f bin -o file_name.bin
 qemu-system-x86_64 file_name.bin
 ```
 
