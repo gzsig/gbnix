@@ -1,1 +1,5 @@
 *.bin
+*.o
+*.dis 
+*.elf
+os-image.bin 
