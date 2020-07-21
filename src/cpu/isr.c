@@ -1,5 +1,5 @@
 #include "isr.h"
-#include "idt.h"
+// #include "idt.h"  // multiple definition of idt and idt_reg if uncomment
 #include "../drivers/screen.h"
 #include "../kernel/util.h"
 #include "../drivers/ports.h"
