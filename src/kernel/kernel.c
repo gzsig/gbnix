@@ -1,25 +1,13 @@
+#include "../cpu/isr.h"
+#include "../cpu/timer.h"
+#include "../drivers/keyboard.h"
 
-#include "../drivers/screen.h"
-#include "util.h"
+void main() {
+    isr_install();
 
-void main()
-{
-    clear_screen();
-
-    /* Fill up the screen */
-    int i = 0;
-    for (i = 0; i < 24; i++)
-    {
-        char str[255];
-        int_to_ascii(i, str);
-        kprint_at(str, 0, i);
-    }
-
-    kprint_at("This text forces the kernel to scroll. Row 0 will disappear. ", 60, 24);
-    kprint("And with this text, the kernel will scroll again, and row 1 will disappear too!");
+    asm volatile("sti");
+    // init_timer(50);
+    /* Comment out the timer IRQ handler to read
+     * the keyboard IRQs easier */
+    init_keyboard();
 }
-
-// void main (){
-//     char* video_memory = (char*) 0xb8000;
-//     *video_memory = 'X';
-// }
